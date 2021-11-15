@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 
 const { auth } = require("./middleware/auth");
 
+app.use('/api/users', require('./routes/users'));
+
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const config = require("./config/key");

@@ -1,10 +1,10 @@
 {
-  "name": "react-chat-app",
+  "name": "chat-application",
   "version": "1.0.0",
-  "description": "react blog",
+  "description": "react chat app",
   "main": "index.js",
   "engine": {
-    "node": "10.16.0",
+    "node": "16.17.0",
     "npm": "6.9.0"
   },
   "scripts": {
@@ -13,7 +13,7 @@
     "frontend": "npm run front --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
-  "author": "John ahn",
+  "author": "Hadi Torabi",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
