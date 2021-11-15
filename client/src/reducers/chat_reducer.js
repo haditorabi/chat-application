@@ -4,7 +4,7 @@ import {
     AFTER_POST_MESSAGE
 } from '../actions/types';
  
-export default function(state={},action){
+ function chat_reducer (state={},action){
     switch(action.type){
         case GET_CHATS:
             return {...state, chats: action.payload }
@@ -14,3 +14,4 @@ export default function(state={},action){
             return state;
     }
 }
+export default chat_reducer;

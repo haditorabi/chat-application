@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+var cors = require('cors')
+ 
+app.use(cors())
 
 const { auth } = require("./middleware/auth");
 const { Chat } = require("./models/Chat");

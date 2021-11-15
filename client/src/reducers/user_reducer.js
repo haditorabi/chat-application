@@ -6,7 +6,7 @@ import {
 } from '../actions/types';
  
 
-export default function(state={},action){
+function user_reducer(state={},action){
     switch(action.type){
         case REGISTER_USER:
             return {...state, register: action.payload }
@@ -20,3 +20,4 @@ export default function(state={},action){
             return state;
     }
 }
+export default user_reducer;
