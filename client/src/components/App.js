@@ -5,6 +5,7 @@ import LandingPage from "./views/LandingPage/LandingPage.js";
 import Footer from "./views/Footer/Footer"
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
+import ChatPage from "./views/ChatPage/ChatPage"
 
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
 
       <div className="content_wrapper" style={{ paddingTop: '75px', minHeight: 'calc(100vh - 80px)' }}>
         <Routes>
-          <Route exact path="/register" element={<RegisterPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/chat" element={<ChatPage />} />
           <Route path="/" element={<LandingPage />} />
 
         </Routes>
