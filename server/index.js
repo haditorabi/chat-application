@@ -4,8 +4,10 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 const { auth } = require("./middleware/auth");
+const { Chat } = require("./models/Chat");
 
 app.use('/api/users', require('./routes/users'));
+app.use('/api/chat', require('./routes/chat'));
 
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
