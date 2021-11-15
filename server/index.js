@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
+const { auth } = require("./middleware/auth");
+
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const config = require("./config/key");
