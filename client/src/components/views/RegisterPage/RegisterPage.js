@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { registerUser } from "../../../actions/user_actions";
 import { useDispatch } from "react-redux";
+import {useNavigate } from "react-router";
 
 import {
   Form,
@@ -36,6 +37,7 @@ const tailFormItemLayout = {
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
 
     <Formik
@@ -71,15 +73,13 @@ function RegisterPage(props) {
             lastname: values.lastname,
             image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
           };
-
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              props.history.push("/login");
+              navigate("/login");
             } else {
-              alert(response.payload.err.errmsg)
+              alert(response.payload.err.name)
             }
           })
-
           setSubmitting(false);
         }, 500);
       }}

@@ -1,32 +1,36 @@
 import React, { useEffect } from 'react';
 import { auth } from '../actions/user_actions';
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import {
+    useLocation
+} from "react-router-dom";
 
  function Auth (props) {
         const adminRoute = null;
         let user = useSelector(state => state.user);
         const dispatch = useDispatch();
-
+        const navigate = useNavigate();
+        const { pathname } = useLocation();
         useEffect(() => {
-
             dispatch(auth()).then(async response => {
                 if (await !response.payload.isAuth) {
-                    if (props.reload) {
-                        props.history.push('/register_login')
+                    if (!props.reload && (pathname !== "/login" && pathname !== "/register")) {
+                        navigate('login');
                     }
                 } else {
                     if (adminRoute && !response.payload.isAdmin) {
-                        props.history.push('/')
+                        navigate('/')
                     }
                     else {
                         if (props.reload === false) {
-                            props.history.push('/')
+                            navigate('/')
                         }
                     }
                 }
             })
             
-        }, [dispatch, props.history, user.googleAuth, adminRoute, props.reload])
+        }, [dispatch, user.googleAuth, adminRoute])
 
         return (
             <props.children {...props} user={user} />

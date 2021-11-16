@@ -19,9 +19,9 @@ router.get("/auth", auth, (req, res) => {
 
 router.post("/register", (req, res) => {
     const user = new User(req.body);
+    console.log(req)
     user.save((err, doc) => {
         if (err) return res.json({ success: false, err });
-        sendEmail(doc.email, doc.name, null, "welcome");
         return res.status(200).json({
             success: true
         });

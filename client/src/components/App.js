@@ -15,10 +15,10 @@ function App() {
       <NavBar />
       <div className="content_wrapper" style={{ paddingTop: '75px', minHeight: 'calc(100vh - 80px)' }}>
         <Routes>
+          <Route path="login" element={<Auth reload={false}>{LoginPage}</Auth> } />
+          <Route path="register" element={<Auth reload={false}>{RegisterPage}</Auth> } />
+          <Route path="chat" element={<Auth reload={null}>{ChatPage}</Auth> } />
           <Route path="/" element={<Auth reload={null}>{LandingPage}</Auth>} />
-          <Route path="/chat" element={<Auth reload={null}>{ChatPage}</Auth> } />
-          <Route path="/register" element={<Auth reload={false}>{RegisterPage}</Auth> } />
-          <Route path="/login" element={<Auth reload={false}>{LoginPage}</Auth> } />
 
         </Routes>
       </div>
