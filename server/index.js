@@ -3,10 +3,11 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 var cors = require('cors')
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
- 
+
 app.use(cors())
 
 const { auth } = require("./middleware/auth");
@@ -31,7 +32,6 @@ io.on("connection", socket => {
       try {
           let chat = new Chat({ message: msg.chatMessage, sender:msg.userId, type: msg.type })
           chat.save((err, doc) => {
-            console.log(doc)
             if(err) return res.json({ success: false, err })
 
             Chat.find({ "_id": doc._id })

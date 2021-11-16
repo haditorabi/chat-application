@@ -20,11 +20,11 @@ import {
                     }
                 } else {
                     if (adminRoute && !response.payload.isAdmin) {
-                        navigate('/')
+                            navigate('/chat');
                     }
                     else {
                         if (props.reload === false) {
-                            navigate('/')
+                            navigate('/chat')
                         }
                     }
                 }

@@ -5,13 +5,20 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Form, Input, Button, Checkbox, Typography } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {
+  useLocation
+} from "react-router-dom";
+
 
 import { useDispatch } from "react-redux";
 
 const { Title } = Typography;
 
 function LoginPage(props) {
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
 
   const [formErrorMessage, setFormErrorMessage] = useState('')
@@ -43,16 +50,16 @@ function LoginPage(props) {
             email: values.email,
             password: values.password
           };
-
           dispatch(loginUser(dataToSubmit))
             .then(response => {
               if (response.payload.loginSuccess) {
+                
                 if (rememberMe === true) {
                   window.localStorage.setItem('rememberMe', values.id);
                 } else {
                   localStorage.removeItem('rememberMe');
                 }
-                props.history.push("/");
+                  navigate("/chat");
               } else {
                 setFormErrorMessage('Check out your Account or Password again')
               }
